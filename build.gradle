@@ -1,0 +1,62 @@
+buildscript {
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+    }
+}
+
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+buildDir = 'target'
+
+allprojects { project ->
+    group = 'io.geewit.core'
+
+    compileJava {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    compileJava.options*.compilerArgs = [
+            "-Xlint:unchecked", "-Xlint:options"
+    ]
+
+    compileTestJava {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    //设置编码
+    [compileJava, javadoc, compileTestJava]*.options*.encoding = "UTF-8"
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+artifacts {
+    archives jar
+    archives sourcesJar
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.groupId = project.group
+        pom.artifactId = project.name
+        pom.version = project.version
+    }
+}
+
+//上传到nexus
+
+
+
+
+
+
