@@ -7,6 +7,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'maven'
+apply from: 'https://raw.githubusercontent.com/geewit/gradle_publish_sonatype/master/gradle_publish_sonatype.gradle'
 
 buildDir = 'target'
 
@@ -29,20 +30,6 @@ allprojects { project ->
 
     //设置编码
     [compileJava, javadoc, compileTestJava]*.options*.encoding = "UTF-8"
-}
-
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '3.5'
-}
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-artifacts {
-    archives jar
-    archives sourcesJar
 }
 
 install {
