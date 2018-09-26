@@ -6,8 +6,7 @@ apply plugin: 'signing'
 
 buildDir = 'target'
 
-group = 'io.geewit.core'
-version = VERSION_NAME
+group = GROUP
 
 compileJava {
     sourceCompatibility = JavaVersion.VERSION_1_8
