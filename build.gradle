@@ -26,7 +26,7 @@ compileJava.options*.compilerArgs << "-Xlint:unchecked" << "-Xlint:options"
 [compileJava, javadoc]*.options*.encoding = StandardCharsets.UTF_8.name()
 
 def isReleaseBuild() {
-    return !VERSION_NAME.contains("SNAPSHOT")
+    return !version.contains("SNAPSHOT")
 }
 
 def getReleaseRepositoryUrl() {
