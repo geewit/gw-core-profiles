@@ -1,6 +1,7 @@
 package io.geewit.core;
 
 
+
 /**
  * 环境常量
  * @author geewit
